@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+   web:
+      image: nginx:latest
+      networks:
+         - app_net
+      restart: unless-stopped
+      ports:
+         - "80:80"
+         - "443:443"
+      environment:
+         - FASTCGI_PASS_HOST=php
+      volumes:
+         # Application
+         - ./src/:/var/www/html/tarsius:delegated
+         # Certificates and other configurations
+         - ./nginx/conf.d/:/etc/nginx/conf.d/
+         - ./nginx/certs/:/etc/nginx/certs/:delegated
+         # Nginx Logs
+         - ./logs/:/var/log/nginx/
+   php:
+      build: 
+         dockerfile: Dockerfile
+         context: 'php'
+      networks:
+         - app_net
+      restart: unless-stopped
+      links:
+         - mariadb
+      volumes:
+         # Application
+         - ./src/:/var/www/html/tarsius:delegated
+         # Composer cache
+         - /home/abel/.composer-docker/cache:/root/.composer/cache:delegated
+   mariadb:
+      image: mariadb:latest
+      expose:
+         - 3306
+      ports:
+         - 3306:3306
+      restart: unless-stopped
+      networks:
+         - app_net
+      environment:
+         - MYSQL_ROOT_PASSWORD=senhadoroot
+         - MYSQL_DATABASE=tarsius
+         - MYSQL_USER=tarsius
+         - MYSQL_PASSWORD=tarsius
+      volumes:
+         - ./db/init:/docker-entrypoint-initdb.d
+         - ./db/data:/var/lib/mysql
+
+networks:
+   app_net:
+      driver: bridge
