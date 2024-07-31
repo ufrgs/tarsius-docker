@@ -5,7 +5,7 @@
 
 namespace Tarsius;
 
-use Tarsius\Object;
+use Tarsius\TarsiusObject;
 
 /**
  * Gera assinautra de um objeto. 
@@ -37,11 +37,11 @@ class Signature
 
 	/**
 	 * Gera representação em coordenadas polares do objeto
-	 * @param Object $object
+	 * @param TarsiusObject $object
 	 *
 	 * @return bool[][] Matrix com assinatura da imagem
 	 */
-	public static function generate(Object $object)
+	public static function generate(TarsiusObject $object)
 	{
 		list($xc, $yc) = $object->getCenter();
 		$points = $object->getPoints();

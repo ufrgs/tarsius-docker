@@ -5,7 +5,7 @@
 
 namespace Tarsius;
 
-use Tarsius\Object;
+use Tarsius\TarsiusObject;
 
 /**
  *
@@ -19,7 +19,7 @@ use Tarsius\Object;
  * em uma matrix indexada pelas posição x,y do ponto da imagem.
  *
  * O retorno é uma lista tendo o label(o representante do label set), como chave e como 
- * valor o objeto(instância class Object).
+ * valor o objeto(instância class TarsiusObject).
  *
  * @todo otimizar algoritmo de resolução dos labels
  *
@@ -28,7 +28,7 @@ class ConnectedComponent
 {
 
     /**
-     * @var Object[] $objects Lista de objetos que respeitam os filtros definidos.
+     * @var TarsiusObject[] $objects Lista de objetos que respeitam os filtros definidos.
      */
     public $objects = [];
     /**
@@ -195,7 +195,7 @@ class ConnectedComponent
             foreach ($linha as $y => $l) {
                 $label = $t_l[$l];
                 if (!isset($this->objects[$label])) {
-                    $this->objects[$label] = new Object();
+                    $this->objects[$label] = new TarsiusObject();
                 }
                 $this->objects[$label]->addPoint($x, $y);
             }

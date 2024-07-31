@@ -8,7 +8,7 @@ namespace Tarsius;
 /**
  * Mantem pontos e propriedades de uma objeto da imagem.
  */
-class Object
+class TarsiusObject
 {
 
     /**

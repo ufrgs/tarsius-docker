@@ -148,7 +148,7 @@ abstract class Image
      * @param int $minArea Área mínima para considerar objeto
      * @param int $maxArea Área máxima para considerar objeto
      *
-     * @return Object[] conjunto de objetos encontrados
+     * @return TarsiusObject[] conjunto de objetos encontrados
      */
     public function getObjectsBetween($p1, $p2, $minArea, $maxArea)
     {

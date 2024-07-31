@@ -31,6 +31,11 @@ class MaskGenerator extends Mask
     private $config;
 
     /**
+     * @var float $scale 
+     */
+    public $scale;
+
+    /**
      * Carrega imagem e configuração para geração da máscara
      * 
      * @param string $imageName Nome da imagem a ser processada.

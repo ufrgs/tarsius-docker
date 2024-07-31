@@ -9,7 +9,7 @@ use Tarsius\ImageFactory;
 use Tarsius\Mask;
 use Tarsius\Math;
 use Tarsius\FormAnalyser;
-use Tarsius\Object;
+use Tarsius\TarsiusObject;
 
 class Form
 {
@@ -110,10 +110,10 @@ class Form
      */
     private function loadAnchors($anchorsPositons)
     {  
-        $this->anchors[Mask::ANCHOR_TOP_LEFT] = new Object();
-        $this->anchors[Mask::ANCHOR_TOP_RIGHT] = new Object();
-        $this->anchors[Mask::ANCHOR_BOTTOM_RIGHT] = new Object();
-        $this->anchors[Mask::ANCHOR_BOTTOM_LEFT] = new Object();
+        $this->anchors[Mask::ANCHOR_TOP_LEFT] = new TarsiusObject();
+        $this->anchors[Mask::ANCHOR_TOP_RIGHT] = new TarsiusObject();
+        $this->anchors[Mask::ANCHOR_BOTTOM_RIGHT] = new TarsiusObject();
+        $this->anchors[Mask::ANCHOR_BOTTOM_LEFT] = new TarsiusObject();
         
         $this->anchors[Mask::ANCHOR_TOP_LEFT]->setCenter($anchorsPositons[Mask::ANCHOR_TOP_LEFT]);
         $this->anchors[Mask::ANCHOR_TOP_RIGHT]->setCenter($anchorsPositons[Mask::ANCHOR_TOP_RIGHT]);
