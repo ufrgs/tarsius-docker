@@ -234,7 +234,7 @@ class MaskGenerator extends Mask
         };
         
         $fnSortLinha = function($a,$b){
-            return $a[0] >= $b[0];
+            return (int)($a[0] >= $b[0]);
         };
 
         # Ordena da esquerda para direita
