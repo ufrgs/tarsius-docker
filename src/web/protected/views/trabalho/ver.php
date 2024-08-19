@@ -54,6 +54,9 @@ if($trabalho->status == 2){
 
 <?php if($trabalho->status != 0): ?>
 	<script>
+	if (count === undefined) {
+		count = 0;
+	}
 	setInterval(function(){
 		$.ajax({
 			url: '<?=$this->createUrl('/trabalho/updateVer',['id'=>$trabalho->id]);?>',
