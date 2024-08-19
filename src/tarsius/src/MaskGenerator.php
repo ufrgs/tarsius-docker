@@ -230,7 +230,7 @@ class MaskGenerator extends Mask
         # DEBUG
         
         $fnSortLinhaColuna = function($a,$b){ 
-            return $a[1] == $b[1] ? $a[0] >= $b[0] : $a[1] >= $b[1];
+            return $a[1] == $b[1] ? (int)($a[0] >= $b[0]) : (int)($a[1] >= $b[1]);
         };
         
         $fnSortLinha = function($a,$b){
