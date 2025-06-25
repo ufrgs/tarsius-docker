@@ -1,5 +1,4 @@
-ARG PHP_VERSION=8.3.0-fpm-bullseye
-# 7.4.0-fpm-buster
+ARG PHP_VERSION=8.3.20-fpm-bullseye
 FROM php:${PHP_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -88,6 +87,8 @@ RUN apt install libmcrypt-dev -y \
     && pecl install mcrypt \
     && docker-php-ext-enable mcrypt
     
+RUN pecl channel-update pecl.php.net
+
 # Install PECL extensions
 RUN printf "\n" | pecl install \
     imagick \
